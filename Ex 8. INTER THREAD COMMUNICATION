@@ -1,0 +1,81 @@
+class SharedData {
+    int value;
+    boolean available = false;
+
+    synchronized void produce(int value) {
+        try {
+            while (available)
+                wait();
+
+            this.value = value;
+            System.out.println("Produced " + value);
+
+            available = true;
+            notify();
+        } catch (InterruptedException e) {
+            System.out.println(e);
+        }
+    }
+
+    synchronized void consume() {
+        try {
+            while (!available)
+                wait();
+
+            System.out.println("Consumed " + value);
+
+            available = false;
+            notify();
+        } catch (InterruptedException e) {
+            System.out.println(e);
+        }
+    }
+}
+
+class Producer extends Thread {
+    SharedData data;
+
+    Producer(SharedData data) {
+        this.data = data;
+    }
+
+    public void run() {
+        for (int i = 1; i <= 2; i++) {
+            data.produce(i);
+        }
+    }
+}
+
+class Consumer extends Thread {
+    SharedData data;
+
+    Consumer(SharedData data) {
+        this.data = data;
+    }
+
+    public void run() {
+        for (int i = 1; i <= 2; i++) {
+            data.consume();
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        SharedData data = new SharedData();
+
+        Producer p = new Producer(data);
+        Consumer c = new Consumer(data);
+
+        p.start();
+        c.start();
+    }
+}
+
+OUTPUT:
+
+Produced 1
+Consumed 1
+Produced 2
+Consumed 2
+...
