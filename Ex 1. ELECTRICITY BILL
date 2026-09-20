@@ -1,0 +1,173 @@
+import java.util.Scanner;
+
+class ElectricityBill {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        String name, address, type;
+        int consumerNo, units;
+        double bill = 0, fixedCharge = 0, total;
+
+        System.out.println("======================================");
+        System.out.println("       ELECTRICITY BILL SYSTEM");
+        System.out.println("======================================");
+
+        System.out.print("Enter Consumer Number : ");
+        consumerNo = sc.nextInt();
+        sc.nextLine();
+
+        System.out.print("Enter Consumer Name   : ");
+        name = sc.nextLine();
+
+        System.out.print("Enter Address         : ");
+        address = sc.nextLine();
+
+        System.out.print("Enter Bill Type (Prepaid/Postpaid): ");
+        type = sc.nextLine();
+
+        System.out.print("Enter Units Consumed  : ");
+        units = sc.nextInt();
+
+        // PREPAID BILL
+        if (type.equalsIgnoreCase("Prepaid")) {
+
+            if (units <= 100) {
+                bill = units * 2.50;
+            }
+            else if (units <= 200) {
+                bill = (100 * 2.50) + ((units - 100) * 3.50);
+            }
+            else if (units <= 500) {
+                bill = (100 * 2.50) +
+                       (100 * 3.50) +
+                       ((units - 200) * 5.00);
+            }
+            else {
+                bill = (100 * 2.50) +
+                       (100 * 3.50) +
+                       (300 * 5.00) +
+                       ((units - 500) * 7.00);
+            }
+
+            fixedCharge = 20;
+
+        }
+
+        // POSTPAID BILL
+        else if (type.equalsIgnoreCase("Postpaid")) {
+
+            if (units <= 100) {
+                bill = units * 3.00;
+            }
+            else if (units <= 200) {
+                bill = (100 * 3.00) + ((units - 100) * 4.00);
+            }
+            else if (units <= 500) {
+                bill = (100 * 3.00) +
+                       (100 * 4.00) +
+                       ((units - 200) * 5.50);
+            }
+            else {
+                bill = (100 * 3.00) +
+                       (100 * 4.00) +
+                       (300 * 5.50) +
+                       ((units - 500) * 8.00);
+            }
+
+            fixedCharge = 50;
+        }
+
+        else {
+            System.out.println("Invalid Bill Type!");
+            sc.close();
+            return;
+        }
+
+        total = bill + fixedCharge;
+
+        // DISPLAY BILL
+        System.out.println();
+        System.out.println("======================================");
+        System.out.println("          ELECTRICITY BILL");
+        System.out.println("======================================");
+
+        System.out.println("Consumer Number : " + consumerNo);
+        System.out.println("Consumer Name   : " + name);
+        System.out.println("Address         : " + address);
+        System.out.println("Bill Type       : " + type);
+        System.out.println("Units Consumed  : " + units);
+        System.out.println("--------------------------------------");
+        System.out.println("Energy Charge   : Rs." + bill);
+        System.out.println("Fixed Charge    : Rs." + fixedCharge);
+        System.out.println("--------------------------------------");
+        System.out.println("Total Bill      : Rs." + total);
+        System.out.println("======================================");
+
+        if (type.equalsIgnoreCase("Prepaid")) {
+            System.out.println("Status          : Amount deducted from balance");
+        }
+        else {
+            System.out.println("Status          : Payment is due");
+        }
+
+        System.out.println("Thank You!");
+        System.out.println("======================================");
+
+        sc.close();
+    }
+}
+
+OUTPUT:
+
+======================================
+       ELECTRICITY BILL SYSTEM
+======================================
+Enter Consumer Number : 101
+Enter Consumer Name   : Sobana
+Enter Address         : Chennai
+Enter Bill Type (Prepaid/Postpaid): Prepaid
+Enter Units Consumed  : 250
+
+======================================
+          ELECTRICITY BILL
+======================================
+Consumer Number : 101
+Consumer Name   : Sobana
+Address         : Chennai
+Bill Type       : Prepaid
+Units Consumed  : 250
+--------------------------------------
+Energy Charge   : Rs.525.0
+Fixed Charge    : Rs.20.0
+--------------------------------------
+Total Bill      : Rs.545.0
+======================================
+Status          : Amount deducted from balance
+Thank You!
+======================================
+
+
+Enter Consumer Number : 102
+Enter Consumer Name   : Arun
+Enter Address         : Madurai
+Enter Bill Type (Prepaid/Postpaid): Postpaid
+Enter Units Consumed  : 250
+
+======================================
+          ELECTRICITY BILL
+======================================
+Consumer Number : 102
+Consumer Name   : Arun
+Address         : Madurai
+Bill Type       : Postpaid
+Units Consumed  : 250
+--------------------------------------
+Energy Charge   : Rs.675.0
+Fixed Charge    : Rs.50.0
+--------------------------------------
+Total Bill      : Rs.725.0
+======================================
+Status          : Payment is due
+Thank You!
+======================================
