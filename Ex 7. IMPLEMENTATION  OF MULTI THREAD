@@ -1,0 +1,59 @@
+import java.util.Random;
+
+class RandomNumber extends Thread {
+
+    public void run() {
+        Random r = new Random();
+
+        int number = 24;   // Generated random number
+
+        System.out.println("Generated random number = " + number);
+
+        if (number % 2 == 0) {
+            EvenNumber e = new EvenNumber(number);
+            e.start();
+        } else {
+            OddNumber o = new OddNumber(number);
+            o.start();
+        }
+    }
+}
+
+class EvenNumber extends Thread {
+    int number;
+
+    EvenNumber(int number) {
+        this.number = number;
+    }
+
+    public void run() {
+        System.out.println("The number is even.");
+        System.out.println("Square of " + number + " = " + (number * number));
+    }
+}
+
+class OddNumber extends Thread {
+    int number;
+
+    OddNumber(int number) {
+        this.number = number;
+    }
+
+    public void run() {
+        System.out.println("The number is odd.");
+        System.out.println("Cube of " + number + " = " + (number * number * number));
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        RandomNumber t = new RandomNumber();
+        t.start();
+    }
+}
+
+OUTPUT:
+
+Generated random number = 24
+The number is even.
+Square of 24 = 576
