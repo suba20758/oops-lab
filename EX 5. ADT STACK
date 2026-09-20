@@ -1,0 +1,106 @@
+import java.util.Scanner;
+
+class Stack {
+    int top = -1;
+    int max = 5;
+    int[] stack = new int[max];
+
+    void push(int element) throws Exception {
+        if (top == max - 1) {
+            throw new Exception("Stack Overflow");
+        }
+        stack[++top] = element;
+    }
+
+    int pop() throws Exception {
+        if (top == -1) {
+            throw new Exception("Stack Underflow");
+        }
+        return stack[top--];
+    }
+
+    void display() throws Exception {
+        if (top == -1) {
+            throw new Exception("Stack is Empty");
+        }
+
+        System.out.print("Stack elements: ");
+        for (int i = top; i >= 0; i--) {
+            System.out.print(stack[i]);
+            if (i != 0)
+                System.out.print(", ");
+        }
+        System.out.println();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Stack s = new Stack();
+
+        while (true) {
+            System.out.println("\nStack using array");
+            System.out.println("1. Push");
+            System.out.println("2. Pop");
+            System.out.println("3. Display");
+            System.out.println("4. Exit");
+
+            System.out.print("Enter your choice: ");
+            int choice = sc.nextInt();
+
+            try {
+                switch (choice) {
+                    case 1:
+                        System.out.print("Enter the element: ");
+                        int element = sc.nextInt();
+                        s.push(element);
+                        break;
+
+                    case 2:
+                        System.out.println("Popped element: " + s.pop());
+                        break;
+
+                    case 3:
+                        s.display();
+                        break;
+
+                    case 4:
+                        System.out.println("Program exited.");
+                        return;
+
+                    default:
+                        System.out.println("Invalid choice");
+                }
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+}
+
+OUTPUT:
+
+Stack using array
+1. Push
+2. Pop
+3. Display
+4. Exit
+Enter your choice: 1
+Enter the element: 10
+
+Stack using array
+1. Push
+2. Pop
+3. Display
+4. Exit
+Enter your choice: 1
+Enter the element: 20
+
+Stack using array
+1. Push
+2. Pop
+3. Display
+4. Exit
+Enter your choice: 3
+Stack elements: 20, 10
