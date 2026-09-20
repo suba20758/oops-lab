@@ -1,0 +1,72 @@
+import java.util.Scanner;
+
+abstract class Shape {
+    abstract void area();
+}
+
+class Rectangle extends Shape {
+    double length, breadth;
+
+    Rectangle(double length, double breadth) {
+        this.length = length;
+        this.breadth = breadth;
+    }
+
+    void area() {
+        System.out.println("Area of rectangle is " + (length * breadth));
+    }
+}
+
+class Triangle extends Shape {
+    double base, height;
+
+    Triangle(double base, double height) {
+        this.base = base;
+        this.height = height;
+    }
+
+    void area() {
+        System.out.println("Area of triangle is " + (0.5 * base * height));
+    }
+}
+
+class Circle extends Shape {
+    double radius;
+
+    Circle(double radius) {
+        this.radius = radius;
+    }
+
+    void area() {
+        System.out.println("Area of circle is " + (Math.PI * radius * radius));
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter length: ");
+        double length = sc.nextDouble();
+
+        System.out.print("Enter breadth: ");
+        double breadth = sc.nextDouble();
+
+        Rectangle r = new Rectangle(length, breadth);
+        Triangle t = new Triangle(length, breadth);
+        Circle c = new Circle(length);
+
+        r.area();
+        t.area();
+        c.area();
+    }
+}
+
+OUTPUT:
+
+Enter length: 10
+Enter breadth: 5
+
+Area of rectangle is 50.0
+Area of triangle is 25.0
+Area of circle is 314.2857
