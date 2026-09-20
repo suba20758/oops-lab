@@ -1,0 +1,245 @@
+package converter;
+
+public class CurrencyConverter {
+
+    public double dollarToRupee(double dollar) {
+        return dollar * 83;
+    }
+
+    public double rupeeToDollar(double rupee) {
+        return rupee / 83;
+    }
+
+    public double euroToRupee(double euro) {
+        return euro * 90;
+    }
+
+    public double rupeeToEuro(double rupee) {
+        return rupee / 90;
+    }
+}
+
+
+
+package converter;
+
+public class DistanceConverter {
+
+    public double kmToMeter(double km) {
+        return km * 1000;
+    }
+
+    public double meterToKm(double meter) {
+        return meter / 1000;
+    }
+
+    public double mileToKm(double mile) {
+        return mile * 1.609;
+    }
+
+    public double kmToMile(double km) {
+        return km / 1.609;
+    }
+}
+
+
+
+package converter;
+
+public class TimeConverter {
+
+    public double hourToMinute(double hour) {
+        return hour * 60;
+    }
+
+    public double minuteToHour(double minute) {
+        return minute / 60;
+    }
+
+    public double hourToSecond(double hour) {
+        return hour * 3600;
+    }
+
+    public double secondToHour(double second) {
+        return second / 3600;
+    }
+}
+
+
+
+import java.util.Scanner;
+import converter.CurrencyConverter;
+import converter.DistanceConverter;
+import converter.TimeConverter;
+
+public class ConverterMain {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        CurrencyConverter currency = new CurrencyConverter();
+        DistanceConverter distance = new DistanceConverter();
+        TimeConverter time = new TimeConverter();
+
+        int choice, option;
+        double value;
+
+        System.out.println("================================");
+        System.out.println("       CONVERTER PROGRAM");
+        System.out.println("================================");
+        System.out.println("1. Currency Converter");
+        System.out.println("2. Distance Converter");
+        System.out.println("3. Time Converter");
+
+        System.out.print("Enter your choice: ");
+        choice = sc.nextInt();
+
+        switch (choice) {
+
+            case 1:
+                System.out.println("\n--- Currency Converter ---");
+                System.out.println("1. Dollar to Rupee");
+                System.out.println("2. Rupee to Dollar");
+                System.out.println("3. Euro to Rupee");
+                System.out.println("4. Rupee to Euro");
+
+                System.out.print("Enter option: ");
+                option = sc.nextInt();
+
+                System.out.print("Enter amount: ");
+                value = sc.nextDouble();
+
+                switch (option) {
+                    case 1:
+                        System.out.println("Rupees = Rs."
+                                + currency.dollarToRupee(value));
+                        break;
+
+                    case 2:
+                        System.out.println("Dollars = $"
+                                + currency.rupeeToDollar(value));
+                        break;
+
+                    case 3:
+                        System.out.println("Rupees = Rs."
+                                + currency.euroToRupee(value));
+                        break;
+
+                    case 4:
+                        System.out.println("Euros = "
+                                + currency.rupeeToEuro(value));
+                        break;
+
+                    default:
+                        System.out.println("Invalid option");
+                }
+                break;
+
+            case 2:
+                System.out.println("\n--- Distance Converter ---");
+                System.out.println("1. Kilometer to Meter");
+                System.out.println("2. Meter to Kilometer");
+                System.out.println("3. Mile to Kilometer");
+                System.out.println("4. Kilometer to Mile");
+
+                System.out.print("Enter option: ");
+                option = sc.nextInt();
+
+                System.out.print("Enter distance: ");
+                value = sc.nextDouble();
+
+                switch (option) {
+                    case 1:
+                        System.out.println("Meters = "
+                                + distance.kmToMeter(value));
+                        break;
+
+                    case 2:
+                        System.out.println("Kilometers = "
+                                + distance.meterToKm(value));
+                        break;
+
+                    case 3:
+                        System.out.println("Kilometers = "
+                                + distance.mileToKm(value));
+                        break;
+
+                    case 4:
+                        System.out.println("Miles = "
+                                + distance.kmToMile(value));
+                        break;
+
+                    default:
+                        System.out.println("Invalid option");
+                }
+                break;
+
+            case 3:
+                System.out.println("\n--- Time Converter ---");
+                System.out.println("1. Hour to Minute");
+                System.out.println("2. Minute to Hour");
+                System.out.println("3. Hour to Second");
+                System.out.println("4. Second to Hour");
+
+                System.out.print("Enter option: ");
+                option = sc.nextInt();
+
+                System.out.print("Enter time: ");
+                value = sc.nextDouble();
+
+                switch (option) {
+                    case 1:
+                        System.out.println("Minutes = "
+                                + time.hourToMinute(value));
+                        break;
+
+                    case 2:
+                        System.out.println("Hours = "
+                                + time.minuteToHour(value));
+                        break;
+
+                    case 3:
+                        System.out.println("Seconds = "
+                                + time.hourToSecond(value));
+                        break;
+
+                    case 4:
+                        System.out.println("Hours = "
+                                + time.secondToHour(value));
+                        break;
+
+                    default:
+                        System.out.println("Invalid option");
+                }
+                break;
+
+            default:
+                System.out.println("Invalid choice");
+        }
+
+        sc.close();
+    }
+}
+
+
+OUTPUT:
+
+
+================================
+       CONVERTER PROGRAM
+================================
+1. Currency Converter
+2. Distance Converter
+3. Time Converter
+Enter your choice: 1
+
+--- Currency Converter ---
+1. Dollar to Rupee
+2. Rupee to Dollar
+3. Euro to Rupee
+4. Rupee to Euro
+Enter option: 1
+Enter amount: 100
+
+Rupees = Rs.8300.0
