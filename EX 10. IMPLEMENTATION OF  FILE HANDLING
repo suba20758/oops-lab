@@ -1,0 +1,43 @@
+import java.io.File;
+import java.io.IOException;
+
+public class Fibonacci {
+    public static void main(String[] args) throws IOException {
+
+        // Create a File object
+        File f = new File("Fibonacci.java");
+
+        System.out.println("File name: " + f.getName());
+        System.out.println("Path: " + f.getPath());
+        System.out.println("ABS path: " + f.getAbsolutePath());
+        System.out.println("Parent: " + f.getParent());
+
+        System.out.println("The file is exist: " + f.exists());
+        System.out.println("Is file: " + f.isFile());
+        System.out.println("Is directory: " + f.isDirectory());
+        System.out.println("Is readable: " + f.canRead());
+        System.out.println("Is writable: " + f.canWrite());
+        System.out.println("Is absolute: " + f.isAbsolute());
+        System.out.println("Last modified: " + f.lastModified());
+        System.out.println("File size: " + f.length() + " bytes");
+        System.out.println("Is hidden: " + f.isHidden());
+    }
+}
+
+OUTPUT:
+
+B:\Java program
+
+File name: Fibonacci.java
+Path: Fibonacci.java
+ABS path: B:\Java program\Fibonacci.java
+Parent: null
+The file is exist: true
+Is file: true
+Is directory: false
+Is readable: true
+Is writable: true
+Is absolute: false
+Last modified: 12063632401397
+File size: 406 bytes
+Is hidden: false
