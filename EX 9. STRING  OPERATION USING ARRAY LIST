@@ -1,0 +1,96 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        ArrayList<String> list = new ArrayList<>();
+
+        // Add initial elements
+        list.add("Ajit");
+        list.add("Harry");
+        list.add("Chaitanya");
+        list.add("Steve");
+        list.add("Anush");
+
+        System.out.println("Currently the ArrayList object one has the following elements:");
+        System.out.println(list);
+
+        // Add elements
+        list.add("Babu");
+        list.add("Kamal");
+        list.add("Alice");
+        list.add("Bob");
+        list.add("Raj");
+
+        System.out.println("\nArrayList object one after add all:");
+        System.out.println(list);
+
+        // Add elements at given index
+        list.add(0, "Rahul");
+        list.add(1, "Justin");
+
+        System.out.println("\nArrayList object after add elements at the given index:");
+        System.out.println(list);
+
+        // Search element
+        System.out.print("\nEnter the search element: ");
+        String search = sc.nextLine();
+
+        System.out.println("ArrayList object one contains existing "
+                + search + ": " + list.contains(search));
+
+        // Remove element
+        list.remove("Harry");
+
+        System.out.println("\nCurrent ArrayList object one after removing element:");
+        System.out.println(list);
+
+        // Remove element at index
+        list.remove(1);
+
+        System.out.println("\nCurrent ArrayList object one after removing element from index:");
+        System.out.println(list);
+
+        // Display strings starting with given letter
+        System.out.print("\nEnter the letter to display all the strings start with given letter: ");
+        char letter = sc.nextLine().charAt(0);
+
+        System.out.println("ArrayList object contains all the strings start with given letter:");
+
+        for (String str : list) {
+            if (str.charAt(0) == letter) {
+                System.out.println(str);
+            }
+        }
+
+        sc.close();
+    }
+} 
+
+OUTPUT:
+
+Currently the ArrayList object one has the following elements:
+[Ajit, Harry, Chaitanya, Steve, Anush]
+
+ArrayList object one after add all:
+[Ajit, Harry, Chaitanya, Steve, Anush, Babu, Kamal, Alice, Bob, Raj]
+
+ArrayList object after add elements at the given index:
+[Rahul, Justin, Ajit, Harry, Chaitanya, Steve, Anush, Babu, Kamal, Alice, Bob, Raj]
+
+Enter the search element: Babu
+ArrayList object one contains existing Babu: true
+
+Current ArrayList object one after removing element:
+[Rahul, Justin, Ajit, Chaitanya, Steve, Anush, Babu, Kamal, Alice, Bob, Raj]
+
+Current ArrayList object one after removing element from index:
+[Rahul, Ajit, Chaitanya, Steve, Anush, Babu, Kamal, Alice, Bob, Raj]
+
+Enter the letter to display all the strings start with given letter: R
+ArrayList object contains all the strings start with given letter:
+Rahul
+Raj
