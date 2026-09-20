@@ -1,0 +1,261 @@
+import java.util.Scanner;
+
+class Employee {
+    String name, address, mailId, mobileNo, designation;
+    int employeeId;
+    double basicPay;
+
+    void getEmployeeDetails() {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("==========================================");
+        System.out.println("       EMPLOYEE SALARY MANAGEMENT");
+        System.out.println("==========================================");
+
+        System.out.print("Enter Employee Name    : ");
+        name = sc.nextLine();
+
+        System.out.print("Enter Employee ID      : ");
+        employeeId = sc.nextInt();
+        sc.nextLine();
+
+        System.out.print("Enter Address          : ");
+        address = sc.nextLine();
+
+        System.out.print("Enter Mail ID          : ");
+        mailId = sc.nextLine();
+
+        System.out.print("Enter Mobile Number    : ");
+        mobileNo = sc.nextLine();
+
+        System.out.print("Enter Basic Pay        : ");
+        basicPay = sc.nextDouble();
+    }
+
+    void displayDetails() {
+        System.out.println("\n========== EMPLOYEE DETAILS ==========");
+        System.out.println("Employee Name    : " + name);
+        System.out.println("Employee ID      : " + employeeId);
+        System.out.println("Address          : " + address);
+        System.out.println("Mail ID          : " + mailId);
+        System.out.println("Mobile Number    : " + mobileNo);
+        System.out.println("Designation      : " + designation);
+        System.out.println("Basic Pay        : Rs." + basicPay);
+    }
+}
+
+class Programmer extends Employee {
+    void calculateSalary() {
+        designation = "Programmer";
+
+        double da = basicPay * 0.97;
+        double hra = basicPay * 0.10;
+        double pf = basicPay * 0.12;
+        double scf = basicPay * 0.001;
+
+        double grossSalary = basicPay + da + hra;
+        double netSalary = grossSalary - pf - scf;
+
+        displaySalary(da, hra, pf, scf, grossSalary, netSalary);
+    }
+
+    void displaySalary(double da, double hra, double pf,
+                       double scf, double gross, double net) {
+
+        displayDetails();
+
+        System.out.println("\n========== SALARY DETAILS ==========");
+        System.out.println("DA               : Rs." + da);
+        System.out.println("HRA              : Rs." + hra);
+        System.out.println("PF               : Rs." + pf);
+        System.out.println("Staff Club Fund  : Rs." + scf);
+        System.out.println("Gross Salary     : Rs." + gross);
+        System.out.println("Net Salary       : Rs." + net);
+    }
+}
+
+class AssistantProfessor extends Employee {
+    void calculateSalary() {
+        designation = "Assistant Professor";
+
+        double da = basicPay * 0.97;
+        double hra = basicPay * 0.10;
+        double pf = basicPay * 0.12;
+        double scf = basicPay * 0.001;
+
+        double grossSalary = basicPay + da + hra;
+        double netSalary = grossSalary - pf - scf;
+
+        displaySalary(da, hra, pf, scf, grossSalary, netSalary);
+    }
+
+    void displaySalary(double da, double hra, double pf,
+                       double scf, double gross, double net) {
+
+        displayDetails();
+
+        System.out.println("\n========== SALARY DETAILS ==========");
+        System.out.println("DA               : Rs." + da);
+        System.out.println("HRA              : Rs." + hra);
+        System.out.println("PF               : Rs." + pf);
+        System.out.println("Staff Club Fund  : Rs." + scf);
+        System.out.println("Gross Salary     : Rs." + gross);
+        System.out.println("Net Salary       : Rs." + net);
+    }
+}
+
+class AssociateProfessor extends Employee {
+    void calculateSalary() {
+        designation = "Associate Professor";
+
+        double da = basicPay * 0.97;
+        double hra = basicPay * 0.10;
+        double pf = basicPay * 0.12;
+        double scf = basicPay * 0.001;
+
+        double grossSalary = basicPay + da + hra;
+        double netSalary = grossSalary - pf - scf;
+
+        displaySalary(da, hra, pf, scf, grossSalary, netSalary);
+    }
+
+    void displaySalary(double da, double hra, double pf,
+                       double scf, double gross, double net) {
+
+        displayDetails();
+
+        System.out.println("\n========== SALARY DETAILS ==========");
+        System.out.println("DA               : Rs." + da);
+        System.out.println("HRA              : Rs." + hra);
+        System.out.println("PF               : Rs." + pf);
+        System.out.println("Staff Club Fund  : Rs." + scf);
+        System.out.println("Gross Salary     : Rs." + gross);
+        System.out.println("Net Salary       : Rs." + net);
+    }
+}
+
+class Professor extends Employee {
+    void calculateSalary() {
+        designation = "Professor";
+
+        double da = basicPay * 0.97;
+        double hra = basicPay * 0.10;
+        double pf = basicPay * 0.12;
+        double scf = basicPay * 0.001;
+
+        double grossSalary = basicPay + da + hra;
+        double netSalary = grossSalary - pf - scf;
+
+        displaySalary(da, hra, pf, scf, grossSalary, netSalary);
+    }
+
+    void displaySalary(double da, double hra, double pf,
+                       double scf, double gross, double net) {
+
+        displayDetails();
+
+        System.out.println("\n========== SALARY DETAILS ==========");
+        System.out.println("DA               : Rs." + da);
+        System.out.println("HRA              : Rs." + hra);
+        System.out.println("PF               : Rs." + pf);
+        System.out.println("Staff Club Fund  : Rs." + scf);
+        System.out.println("Gross Salary     : Rs." + gross);
+        System.out.println("Net Salary       : Rs." + net);
+    }
+}
+
+public class EmployeeSalary {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("\nChoose Designation");
+        System.out.println("1. Programmer");
+        System.out.println("2. Assistant Professor");
+        System.out.println("3. Associate Professor");
+        System.out.println("4. Professor");
+        System.out.println("5. Exit");
+
+        System.out.print("Enter your choice: ");
+        int choice = sc.nextInt();
+
+        if (choice == 5) {
+            System.out.println("Program Exited.");
+            sc.close();
+            return;
+        }
+
+        Employee emp;
+
+        switch (choice) {
+
+            case 1:
+                Programmer p = new Programmer();
+                p.getEmployeeDetails();
+                p.calculateSalary();
+                break;
+
+            case 2:
+                AssistantProfessor ap = new AssistantProfessor();
+                ap.getEmployeeDetails();
+                ap.calculateSalary();
+                break;
+
+            case 3:
+                AssociateProfessor asp = new AssociateProfessor();
+                asp.getEmployeeDetails();
+                asp.calculateSalary();
+                break;
+
+            case 4:
+                Professor pr = new Professor();
+                pr.getEmployeeDetails();
+                pr.calculateSalary();
+                break;
+
+            default:
+                System.out.println("Invalid Choice!");
+        }
+
+        sc.close();
+    }
+}
+
+
+OUTPUT:
+
+Choose Designation
+1. Programmer
+2. Assistant Professor
+3. Associate Professor
+4. Professor
+5. Exit
+
+Enter your choice: 1
+
+==========================================
+       EMPLOYEE SALARY MANAGEMENT
+==========================================
+Enter Employee Name    : Sobana
+Enter Employee ID      : 101
+Enter Address          : Chennai
+Enter Mail ID          : sobana@gmail.com
+Enter Mobile Number    : 9876543210
+Enter Basic Pay        : 30000
+
+========== EMPLOYEE DETAILS ==========
+Employee Name    : Sobana
+Employee ID      : 101
+Address          : Chennai
+Mail ID          : sobana@gmail.com
+Mobile Number    : 9876543210
+Designation      : Programmer
+Basic Pay        : Rs.30000.0
+
+========== SALARY DETAILS ========
+DA               : Rs.29100.0
+HRA              : Rs.3000.0
+PF               : Rs.3600.0
+Staff Club Fund  : Rs.30.0
+Gross Salary     : Rs.62100.0
+Net Salary       : Rs.58470.0
